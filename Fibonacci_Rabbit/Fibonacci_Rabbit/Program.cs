@@ -1,10 +1,24 @@
 ﻿
 while (true)
 {
-    Console.WriteLine("Enter the number of months: ");
+    Console.WriteLine("Enter the number of Mode (1.Rescoursive  2.For): ");
+    int inputMode = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine("input Mode is : " + inputMode);
+    Console.WriteLine("Please input the input data: ");
     int inputStr = Convert.ToInt32(Console.ReadLine());
-    Console.WriteLine("inputStr: " + inputStr);
-    Console.WriteLine(Fibonacci(inputStr));
+    if (inputMode == 1)
+    {
+        Console.WriteLine(Recoursive(inputStr));
+    }
+    else if (inputMode == 2)
+    {
+        Console.WriteLine(Forloop(inputStr));
+    }
+    else
+    {
+        Console.WriteLine("Please input the correct mode");
+    }
+    //Console.WriteLine(Fibonacci(inputStr));
 }
 int Recoursive(int input)
 {
@@ -12,19 +26,15 @@ int Recoursive(int input)
 }
 int Forloop(int input)
 {
-    long[] fib = new long[75];
+    int[] fib = new int[input + 1];
     int i, n;
     fib[1] = 1;
     fib[2] = 1;
-    if (input >= 3)
-    {
-        fib[3] = 1;
-    }
     for (i = 3; i <= input; i++)
     {
         fib[i] = fib[i - 1] + fib[i - 2];
     }
-    return 0;
+    return fib[input];
 }
 int Fibonacci(int n)
 {
