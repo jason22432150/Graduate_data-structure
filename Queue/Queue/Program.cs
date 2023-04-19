@@ -27,10 +27,47 @@
     }
     public void Display()
     {
-        Console.WriteLine();
+        for (int i = 0; i < q.Length; i++)
+        {
+            Console.WriteLine(q[i]);
+        }
+    }
+}
+
+//Queue Link List
+class LinkQueue
+{
+    private int data;
+    private int next;
+    private int front;
+    private int rear;
+    private void enqueue(int data)
+    {
+        if (front == 0)
+        {
+            front = data;
+            rear = front;
+        }
+        else
+        {
+            this.rear.next
+        }
     }
 }
 class Program
 {
-
+    static void Main(string[] args)
+    {
+        Queue queue = new Queue(5);
+        queue.put(1);
+        queue.put(2);
+        queue.put(3);
+        queue.put(4);
+        queue.put(5);
+        queue.put(6);
+        queue.Display();
+        Console.WriteLine("Geted item is {0}", queue.get());
+        queue.Display();
+        Console.ReadLine();
+    }
 }
