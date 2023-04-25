@@ -1,4 +1,6 @@
-﻿class Program
+﻿using System;
+
+class Program
 {
     public static int BinarySearchRecursive(int[] list, int searchnum, int left, int right)
     {
