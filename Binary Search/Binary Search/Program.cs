@@ -1,6 +1,6 @@
 ﻿class Program
 {
-    public static BinarySearchRecursive(int[] list, int searchnum, int left, int right)
+    public static int BinarySearchRecursive(int[] list, int searchnum, int left, int right)
     {
         int middle;
         if (left <= right)
