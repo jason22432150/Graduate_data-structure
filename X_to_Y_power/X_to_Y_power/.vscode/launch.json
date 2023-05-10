@@ -10,15 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-<<<<<<< HEAD
-            "program": "${workspaceFolder}/binomial coefficient/binomial coefficient/bin/Debug/net6.0/binomial coefficient.dll",
+            "program": "${workspaceFolder}/bin/Debug/net6.0/X_to_Y_power.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/binomial coefficient/binomial coefficient",
-=======
-            "program": "${workspaceFolder}/Ackerman function/Ackerman function/bin/Debug/net6.0/Ackerman function.dll",
-            "args": [],
-            "cwd": "${workspaceFolder}/Ackerman function/Ackerman function",
->>>>>>> master
+            "cwd": "${workspaceFolder}",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false

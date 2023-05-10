@@ -7,11 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-<<<<<<< HEAD
-                "${workspaceFolder}/binomial coefficient/binomial coefficient/binomial coefficient.csproj",
-=======
-                "${workspaceFolder}/Ackerman function/Ackerman function/Ackerman function.csproj",
->>>>>>> master
+                "${workspaceFolder}/X_to_Y_power.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -23,11 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-<<<<<<< HEAD
-                "${workspaceFolder}/binomial coefficient/binomial coefficient/binomial coefficient.csproj",
-=======
-                "${workspaceFolder}/Ackerman function/Ackerman function/Ackerman function.csproj",
->>>>>>> master
+                "${workspaceFolder}/X_to_Y_power.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -41,11 +33,7 @@
                 "watch",
                 "run",
                 "--project",
-<<<<<<< HEAD
-                "${workspaceFolder}/binomial coefficient/binomial coefficient/binomial coefficient.csproj"
-=======
-                "${workspaceFolder}/Ackerman function/Ackerman function/Ackerman function.csproj"
->>>>>>> master
+                "${workspaceFolder}/X_to_Y_power.csproj"
             ],
             "problemMatcher": "$msCompile"
         }
