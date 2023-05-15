@@ -1,6 +1,7 @@
-﻿class Program
+﻿class program
 {
-    static int get_rank(char c)
+
+    static int OutStackPrecedence(char c)
     {
         switch (c)
         {
@@ -17,58 +18,83 @@
         }
         return -1;
     }
-    public static string infix_to_postfix(string input)
+    static int InStackPrecedence(char c)
+    {
+        switch (c)
+        {
+            case '(':
+                return 0;
+            case '+':
+            case '-':
+                return 1;
+            case '*':
+            case '/':
+                // case '^':
+                return 2;
+            case '^':
+                return 3;
+        }
+        return -1;
+    }
+    public static string InfixToPostfix(string infix)
     {
         Stack<char> stack = new Stack<char>();
-        string output = "";
-        foreach (char c in input)
+        string postfix = "";
+        foreach (char c in infix)
         {
-            if (c == '+' || c == '-' || c == '*' || c == '/' || c == '^' || c == '(')
+            if (c != '+' && c != '-' && c != '/' && c != '*' && c != '^' && c != '(' && c != ')')
             {
-                if (stack.Count == 0)
+                postfix += c;
+            }
+            else if (c == ')')
+            {
+                while (stack.Peek() != '(')
                 {
-                    stack.Push(c);
+                    postfix += stack.Pop();
                 }
-                if (get_rank(stack.Peek()) < get_rank(c))
+                stack.Pop();
+            }
+            else if (stack.Count == 0 || OutStackPrecedence(c) > InStackPrecedence(stack.Peek()))
+            {
+                stack.Push(c);
+            }
+            else if (stack.Count != 0 && OutStackPrecedence(c) <= InStackPrecedence(stack.Peek()))
+            {
+                if (stack.Peek() == '^')
                 {
+                    postfix += stack.Pop();
+                    postfix += stack.Pop();
                     stack.Push(c);
                 }
                 else
                 {
-                    while (stack.Count == 0) ;
-                    {
-                        output+=stack.Pop();
-                    }
+                    postfix += stack.Pop();
+                    stack.Push(c);
                 }
+
             }
-            else if (c == ')')
-            {
-                while (stack.Count!=0)
-                {
-                    char popData = stack.Pop();
-                    output += popData;
-                    if (popData == '(')
-                    {
-                        break;
-                    }
-                }
-            }
+
             else
             {
-                output += c;
+                Console.WriteLine("Error");
             }
         }
-        while (stack.Count != 0) ;
+        while (stack.Count != 0)
         {
-            output += stack.Pop();
+            postfix += stack.Pop();
         }
-        return output;
+        return postfix;
     }
     static void Main(string[] args)
     {
-        Console.Write("input infix expression: ");
-        string input = Console.ReadLine();
-        string ans = infix_to_postfix(input);
-        Console.WriteLine(ans);
+        // string infix = "a+b*c";
+        string infix = "a+b*(c-d)/e^f*g+h";
+        string postfix = InfixToPostfix(infix);
+        Console.Write("Topic         :");
+        Console.WriteLine(infix);
+        Console.Write("My Answer     :");
+        Console.WriteLine(postfix);
+        Console.Write("Correct Answer:");
+        Console.WriteLine("abcd-*ef^/g*+h+");
     }
 }
