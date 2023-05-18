@@ -1,59 +1,70 @@
 ﻿class Program
 {
-    private void Calculate(string postfix)
+    private static void Calculate(string postfix)
     {
         Stack<string> stack = new Stack<string>();
         Stack<string> Calculate_String = new Stack<string>();
         string infix;
-        // int result = 0;
+        // float result = 0;
         foreach (char c in postfix)
         {
-            if (c != '+' || c != '-' || c != '*' || c != '/' || c != '^')
+            //float c = (float)cha;
+            if (c != '+' && c != '-' && c != '*' && c != '/' && c != '^')
             {
                 stack.Push(c.ToString());
             }
             else
             {
-                int second = int.Parse(stack.Pop());
-                int secondStr = int.Parse(Calculate_String.Pop());
-                int first = int.Parse(stack.Pop());
-                int firstStr = int.Parse(Calculate_String.Pop());
+                float second = float.Parse(stack.Pop());
+                float first = float.Parse(stack.Pop());
+                //float secondStr;
+                string firstStr = "";
+                if (Calculate_String.Count != 0)
+                {
+                    //secondStr = float.Parse(Calculate_String.Pop());
+                    firstStr = Calculate_String.Pop();
+                }
+                else
+                {
+                    firstStr = "empty";
+                }
                 switch (c)
                 {
                     case '+':
-                        int result = first + second;
+                        float result = first + second;
                         stack.Push(result.ToString());
-                        Calculate_String.Push("(" + secondStr + "+" + firstStr + ")");
+                        Calculate_String.Push("(" + firstStr + "+" + "(" + first + "+" + second + ")" + ")");
                         break;
                     case '-':
-                        result = (char)(first / second);
+                        result = first - second;
                         stack.Push(result.ToString());
-                        Calculate_String.Push("(" + secondStr + "-" + firstStr + ")");
+                        Calculate_String.Push("(" + firstStr + "+" + "(" + first + "-" + second + ")" + ")");
                         break;
                     case '*':
-                        result = (char)(first * second);
+                        result = first * second;
                         stack.Push(result.ToString());
-                        Calculate_String.Push("(" + secondStr + "*" + firstStr + ")");
+                        Calculate_String.Push("(" + firstStr + "+" + "(" + first + "*" + second + ")" + ")");
                         break;
                     case '/':
-                        result = (char)(first / second);
+                        result = first / second;
                         stack.Push(result.ToString());
-                        Calculate_String.Push("(" + secondStr + "/" + firstStr + ")");
+                        Calculate_String.Push("(" + firstStr + "+" + "(" + first + "/" + second + ")" + ")");
                         break;
                     case '^':
-                        result = (char)(first ^ second);
+                        result = Convert.ToInt32(first) ^ Convert.ToInt32(second);
                         stack.Push(result.ToString());
-                        Calculate_String.Push("(" + secondStr + "^" + firstStr + ")");
+                        Calculate_String.Push("(" + firstStr + "+" + "(" + first + "^" + second + ")" + ")");
                         break;
                 }
             }
         }
-        infix = Calculate_String.Pop();
-        Console.WriteLine();
+        // infix = Calculate_String.Pop();
+        Console.WriteLine(Calculate_String.Pop());
+        Console.WriteLine(stack.Pop());
     }
     static void Main()
     {
-        string postfix = "23-54*+";
+        string postfix = "23^45*+";
         Calculate(postfix);
         Console.WriteLine();
     }
