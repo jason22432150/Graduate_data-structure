@@ -1,59 +1,4 @@
-﻿class Queue
-{
-    private int[] q; // this array holds the queue
-    private int putloc, getloc; // the put and get indices
-    public Queue(int size)
-    {
-        q = new int[size]; // allocate memory for queue
-        putloc = getloc = 0;
-    }
-    public void put(int ch)
-    {
-        if (putloc == q.Length)
-        {
-            Console.WriteLine(" -- Queue is full.");
-            return;
-        }
-        q[putloc++] = ch;
-    }
-    public int get()
-    {
-        if (getloc == putloc)
-        {
-            Console.WriteLine(" -- Queue is empty.");
-            return (int)0;
-        }
-        return q[getloc++];
-    }
-    public void Display()
-    {
-        for (int i = 0; i < q.Length; i++)
-        {
-            Console.WriteLine(q[i]);
-        }
-    }
-}
-//Queue Link List
-//class LinkQueue
-//{
-//    private int data;
-//    private int next;
-//    private int front;
-//    private int rear;
-//    private void enqueue(int data)
-//    {
-//        if (front == 0)
-//        {
-//            front = data;
-//            rear = front;
-//        }
-//        else
-//        {
-//this.rear.next
-//        }
-//    }
-//}
-class Program
+﻿class Program
 {
     static void Main(string[] args)
     {
@@ -63,7 +8,7 @@ class Program
         Console.WriteLine(modes);
         switch (modes)
         {
-            case (1):
+            case 1:
                 ArrayQueueOne ArrayQueueOne = new ArrayQueueOne(7);
                 ArrayQueueOne.EnQueue("1");
                 ArrayQueueOne.EnQueue("2");
@@ -111,18 +56,38 @@ class Program
                 ArrayQueueTwo.Display();
                 ArrayQueueTwo.Display();
                 break;
+            case 3:
+                ArrayQueueThree ArrayQueueThree = new ArrayQueueThree(6);
+                ArrayQueueThree.EnQueue("1");
+                ArrayQueueThree.Display();
+                ArrayQueueThree.EnQueue("2");
+                ArrayQueueThree.Display();
+                ArrayQueueThree.EnQueue("3");
+                ArrayQueueThree.Display();
+                ArrayQueueThree.EnQueue("4");
+                ArrayQueueThree.Display();
+                ArrayQueueThree.EnQueue("5");
+                ArrayQueueThree.Display();
+                //ArrayQueueTwo.EnQueue("6");
+                ArrayQueueThree.DeQueue();
+                ArrayQueueThree.Display();
+                ArrayQueueThree.DeQueue();
+                ArrayQueueThree.Display();
+                ArrayQueueThree.EnQueue("7");
+                ArrayQueueThree.Display();
+                ArrayQueueThree.EnQueue("8");
+                ArrayQueueThree.Display();
+                ArrayQueueThree.EnQueue("9");
+                ArrayQueueThree.Display();
+                ArrayQueueThree.EnQueue("10");
+                ArrayQueueThree.Display();
+                ArrayQueueThree.EnQueue("11");
+                ArrayQueueThree.Display();
+                ArrayQueueThree.EnQueue("12");
+                ArrayQueueThree.Display();
+                ArrayQueueThree.Display();
+                break;
         }
-        //Queue queue = new Queue(5);
-        //queue.put(1);
-        //queue.put(2);
-        //queue.put(3);
-        //queue.put(4);
-        //queue.put(5);
-        //queue.put(6);
-        //queue.Display();
-        //Console.WriteLine("Geted item is {0}", queue.get());
-        //queue.Display();
-        //Console.ReadLine();
     }
 }
 //linear Array Queue One 1 ~ n
@@ -151,6 +116,7 @@ class ArrayQueueOne
             q[rear] = item;
             Console.WriteLine("Enqueue: " + item);
         }
+        Console.WriteLine("rear= " + rear + " front= " + front);
     }
     public void DeQueue()
     {
@@ -163,6 +129,7 @@ class ArrayQueueOne
             front++;
             Console.WriteLine("Dequeue: " + q[front]);
         }
+        Console.WriteLine("rear= " + rear + " front= " + front);
     }
     public void Display()
     {
@@ -172,7 +139,7 @@ class ArrayQueueOne
         }
     }
 }
-//linear Array Queue One 0 ~ n-1
+//linear Array Queue Two 0 ~ n-1
 class ArrayQueueTwo
 {
     private string[] q;
@@ -225,5 +192,86 @@ class ArrayQueueTwo
             Console.Write(i + ": ");
             Console.WriteLine(q[i]);
         }
+    }
+}
+//linear Array Queue Three 0 ~ n-1
+class ArrayQueueThree
+{
+    private string[] q;
+    private int front = 0, rear = 0;
+    private bool tag = false;
+    public ArrayQueueThree(int size)
+    {
+        q = new string[size];
+    }
+    public void EnQueue(string item)
+    {
+        Console.WriteLine();
+        if (tag && front == rear)
+        {
+            Console.WriteLine("Stack is full");
+        }
+        else
+        {
+            q[rear] = item;
+            rear = (rear + 1) % q.Length;
+            tag = true;
+            Console.WriteLine("Enqueue: " + item);
+            if (rear == front)
+            {
+                tag = true;
+            }
+        }
+        Console.WriteLine("rear= " + rear + " front= " + front + " tag= " + tag);
+
+    }
+    public void DeQueue()
+    {
+        Console.WriteLine();
+        if (tag && front == rear)
+        {
+            Console.WriteLine("Stack is empty");
+        }
+        else
+        {
+            string item = q[front];
+            front = (front + 1) % q.Length;
+            tag = false;
+            Console.WriteLine("Dequeue: " + item);
+            if (front == rear)
+            {
+                tag = false;
+            }
+        }
+        Console.WriteLine("rear= " + rear + " front= " + front + " tag= " + tag);
+
+    }
+    public void Display()
+    {
+        for (int i = 0; i < q.Length; i++)
+        {
+            Console.Write(i + ": ");
+            Console.WriteLine(q[i]);
+        }
+    }
+}
+class LinkedQueueOne
+{
+    private class Node
+    {
+        public string Data;
+        public Node? link;
+        public int? rear = null;
+        public Node(string data)
+        {
+            Data = data;
+            link = null;
+        }
+    }
+    public void EnQueue(string item)
+    {
+        Node node = new Node("1");
+        node.Data = item;
+        node.link = null;
     }
 }
