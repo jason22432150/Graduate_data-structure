@@ -176,7 +176,7 @@ class ArrayQueueOne
 class ArrayQueueTwo
 {
     private string[] q;
-    private int front = 0;
+    private int front = -1;
     private int rear = 0;
     private int n;
     public ArrayQueueTwo(int size)
@@ -187,7 +187,7 @@ class ArrayQueueTwo
     }
     public void EnQueue(string item)
     {
-        rear = (rear + 1) % n;
+
         Console.WriteLine("rear= " + rear);
         Console.WriteLine("front= " + front);
         Console.WriteLine();
@@ -197,7 +197,7 @@ class ArrayQueueTwo
         }
         else
         {
-
+            rear = (rear + 1) % n;
             q[rear] = item;
             Console.WriteLine("Eequeue: " + item);
         }
