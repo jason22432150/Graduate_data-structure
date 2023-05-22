@@ -260,12 +260,12 @@ class LinkedQueueOne
     private class Node
     {
         public string Data;
-        public Node? link;
+        public Node? next;
         public int? rear = null;
         public Node(string data)
         {
             Data = data;
-            link = null;
+            next = null;
         }
     }
     public void EnQueue(string item)
