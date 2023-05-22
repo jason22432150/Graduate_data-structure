@@ -270,7 +270,7 @@ class LinkedQueueOne
     }
     public void EnQueue(string item)
     {
-        Node node = new Node("1");
+        Node node = new Node(item);
         node.Data = item;
         node.link = null;
     }
