@@ -16,13 +16,13 @@ internal class Program
             else
             {
                 int a = 0, b = 1, c = 0;
-                for (int j = 0; j < i; j++)
+                for (int j = 2; j <= i; j++)
                 {
                     c = a + b;
                     a = b;
                     b = c;
                 }
-                return a;
+                return c;
             }
 
         }
@@ -37,8 +37,8 @@ internal class Program
             }
             return arr[i];
         }
-        Console.WriteLine(FibonacciRecursive(10));
-        Console.WriteLine(FibonacciNoRecursive(10));
-        Console.WriteLine(FibonacciArray(10));
+        Console.WriteLine(FibonacciRecursive(2));
+        Console.WriteLine(FibonacciNoRecursive(2));
+        Console.WriteLine(FibonacciArray(2));
     }
 }
