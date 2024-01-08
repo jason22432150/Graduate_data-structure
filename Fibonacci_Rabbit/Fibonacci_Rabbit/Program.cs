@@ -13,7 +13,7 @@ while (true)
     else if (inputMode == 2)
     {
         Console.WriteLine(Forloop(inputStr));
-    }
+    } 
     else
     {
         Console.WriteLine("Please input the correct mode");
