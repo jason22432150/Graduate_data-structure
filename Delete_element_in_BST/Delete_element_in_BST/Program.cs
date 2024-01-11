@@ -96,7 +96,16 @@ class BST
         if (root != null)
         {
             InorderTraversal(root.Left);
+            InorderTraversal(root.Left);
+            if (root.Left != null)
+            {
+                Console.Write(root.Left.Data + " ");
+            }
             Console.Write(root.Data + " ");
+            if (root.Right != null)
+            {
+                Console.WriteLine(root.Right.Data);
+            }
             InorderTraversal(root.Right);
         }
     }
